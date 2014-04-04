@@ -61,6 +61,10 @@ var transposeMatrix = function (matrix) {
     return result;
 }
 
+var objectEquals = function(objet1, objet2) {
+    return JSON.stringify(objet1) == JSON.stringify(objet2);
+}
+
 ExternalApi.prototype.simulateMove = function (direction) {
     // 0: up, 1: right, 2: down, 3: left
     console.log("simulate " + direction);
@@ -123,6 +127,9 @@ ExternalApi.prototype.simulateMove = function (direction) {
         // "left"
     } else if (direction == 3) {
         //newGrid = newGrid;
+    }
+    if (objectEquals(grid, newGrid)) {
+        return false;
     }
     return newGrid;
 }
