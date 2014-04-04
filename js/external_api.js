@@ -67,9 +67,7 @@ var objectEquals = function(objet1, objet2) {
 
 ExternalApi.prototype.simulateMove = function (direction) {
     // 0: up, 1: right, 2: down, 3: left
-    console.log("simulate " + direction);
     var grid = this.getGrid();
-    printGrid(grid);
     var newGrid;
     // "up"
     if (direction == 0) {
@@ -79,7 +77,7 @@ ExternalApi.prototype.simulateMove = function (direction) {
         newGrid = reverseMatrix(grid, true);
         // "down"
     } else if (direction == 2) {
-        newGrid = reverseMatrix(transposeMatrix(grid), false);
+        newGrid = reverseMatrix(transposeMatrix(grid), true);
         // "left"
     } else if (direction == 3) {
         newGrid = copyData(grid);
@@ -114,7 +112,6 @@ ExternalApi.prototype.simulateMove = function (direction) {
         }
     }
 
-    printGrid(newGrid);
     // "up"
     if (direction == 0) {
         newGrid = transposeMatrix(newGrid);
@@ -123,7 +120,7 @@ ExternalApi.prototype.simulateMove = function (direction) {
         newGrid = reverseMatrix(newGrid, true);
         // "down"
     } else if (direction == 2) {
-        newGrid = transposeMatrix(reverseMatrix(newGrid, false));
+        newGrid = transposeMatrix(reverseMatrix(newGrid, true));
         // "left"
     } else if (direction == 3) {
         //newGrid = newGrid;
